@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model AMC.Models.Actor
+
+<h4>Add a new actor</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.ActorName)
+    @Html.TextBoxFor(model => model.ActorName)
+
+    @Html.Label("Select movie")
+    @Html.DropDownList("MovieId")
+
+    <input type="submit" value="Add new actor" class="btn btn-default" />
+}
+<p>@Html.ActionLink("Show all actors", "Index")</p>

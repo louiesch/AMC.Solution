@@ -1,0 +1,28 @@
+@{
+  Layout = "_Layout";
+}
+
+@model AMC.Models.Movie;
+
+<h2>Movie Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.MovieName): @Html.DisplayFor(model => model.MovieName)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This movie does not contain any actors</p>
+}
+else
+{
+  <h4>Actors in this movie:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntities)
+  {
+    <li>@join.Actor.ActorName</li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to movies", "Index")</p>
+<p>@Html.ActionLink("Edit Movie", "Edit", new { id = Model.MovieId })</p>
+<p>@Html.ActionLink("Delete Movie", "Delete", new { id = Model.MovieId })</p>
